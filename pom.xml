@@ -1,0 +1,35 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.faceprep.bookshop</groupId>
+  <artifactId>BookShop</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>BookShop</name>
+  <description>BookShop Description</description>
+  <dependencies>
+<dependency>
+ <groupId>junit</groupId>     <!-- NOT org.junit here -->
+  <artifactId>junit-dep</artifactId>
+  <version>4.8.2</version>
+</dependency>
+
+      <!-- https://mvnrepository.com/artifact/com.opencsv/opencsv -->
+      <dependency>
+          <groupId>com.opencsv</groupId>
+          <artifactId>opencsv</artifactId>
+          <version>5.6</version>
+      </dependency>
+
+      <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+      <dependency>
+          <groupId>org.apache.commons</groupId>
+          <artifactId>commons-lang3</artifactId>
+          <version>3.12.0</version>
+      </dependency>
+
+
+
+
+
+  </dependencies>
+  
+</project>
