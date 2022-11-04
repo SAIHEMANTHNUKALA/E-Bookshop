@@ -1,6 +1,5 @@
 package main;
-
-import java.util.ArrayList;
+import java.io.*;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -10,12 +9,14 @@ import java.util.concurrent.TimeUnit;
 public class BookShop{
 
         public static Item [] itemAvailable = new Item[50];
-        private static Map<String,String> map = new LinkedHashMap<>();
+        private static Map<String,String> map = new LinkedHashMap<String,String>();
         private static int count=3;
         public static boolean forExecute = true;
         public static int registration_count = 0;
+        public static File file;
+        public static String fileName = "people.txt";
 
-        public static void main(String args[]) throws InterruptedException {
+        public static void main(String args[]) throws IOException, InterruptedException {
                 while(forExecute) {
                         executeTheStart();
                         System.out.print("Have you registered? Y/N?");
@@ -23,7 +24,7 @@ public class BookShop{
                 }
         }
 
-        static void executeTheStart() throws InterruptedException {
+        static void executeTheStart() throws InterruptedException, IOException {
                 map.put("saihemanth", "project755");
                 Scanner in = new Scanner(System.in);
                 if(registration_count==0)
@@ -38,30 +39,68 @@ public class BookShop{
                 System.out.print("Please enter the password");
                 System.out.println("");
                 String password = in.nextLine();
+                map.put(user,password);
+                        FileWriter fw = new FileWriter(fileName,true);
+                        BufferedWriter bw=new BufferedWriter(fw);
+                        PrintWriter pw=new PrintWriter(bw);
+                        String str = user + ","+ password;
+                        pw.println(str);
+                        pw.close();
 
-                for (Map.Entry<String, String> entry : map.entrySet()) {
-                        String k = entry.getKey();
-                        String v = entry.getValue();
-                        if (user.equals(k) && password.equals(v)) {
-                                System.out.print("Login Successful!");
-                                System.out.println(" ");
-                                executeTheRest();
-                                forExecute = false;
-                                break;
-                        } else {
-                                System.out.print("user entered the wrong credentials");
-                                System.out.println("");
-                                System.out.print("only " + (--count) + " chances left");
-                                System.out.println("");
-                                if (count == 0) {
-                                        System.out.print("Please try after 1 min");
+                        BufferedReader br = new BufferedReader(new FileReader("C:\\Sai\\my Projects\\Book-Shop-Management-master\\Book-Shop-Management-master\\people.txt"));
+                        String line;
+                        String fin ="";
+                        int count=0;
+                        while((line = br.readLine())!= null)
+                        {
+                                fin +=line;
+                                fin +=",";
+                        }
+                        br.close();
+                        String div[] = fin.split(",");
+                        for(int i=0;i<div.length-1;i++)
+                        {
+                                map.put(div[i],div[i+1]);
+                        }
+
+
+
+                        for (Map.Entry<String, String> entry : map.entrySet()) {
+                                String allKeys = "";
+                                String allValues = "";
+                                Set keys = map.keySet();
+                                Iterator i = keys.iterator();
+                                while (i.hasNext()) {
+                                        allKeys +=i.next();
+                                }
+                                Collection getValues = map.values();
+                                i = getValues.iterator();
+                                while (i.hasNext()) {
+                                        allValues += i.next();
+                                }
+
+
+                                if (allKeys.contains(user) && allValues.contains(password)) {
+                                        System.out.print("Login Successful!");
+                                        System.out.println(" ");
+                                        executeTheRest();
+//                                        forExecute = false;
+//                                        break;
+                                } else {
+                                        System.out.print("user entered the wrong credentials");
                                         System.out.println("");
-                                        TimeUnit.MINUTES.sleep(1);
-                                        count = 3;
+                                        System.out.println("only " + (--count) + " chances left");
+                                        System.out.print("Please click enter to continue");
                                         executeTheStart();
+                                        if (count == 0) {
+                                                System.out.print("Please try after 1 min");
+                                                System.out.println("");
+                                                TimeUnit.MINUTES.sleep(1);
+                                                count = 3;
+                                                executeTheStart();
+                                        }
                                 }
                         }
-                }
 
                 }
                 else if(reg.equals("N") || reg.equals("n"))
@@ -71,34 +110,74 @@ public class BookShop{
                         System.out.println("Password");
                         String passWord = in.nextLine();
                         map.put(userName,passWord);
+//                        System.out.println(map);
+
+                        FileWriter fw = new FileWriter(fileName,true);
+                        BufferedWriter bw=new BufferedWriter(fw);
+                        PrintWriter pw=new PrintWriter(bw);
+                        String str = userName + ","+ passWord;
+                        pw.println(str);
+                        pw.close();
+
+
+                        BufferedReader br = new BufferedReader(new FileReader("C:\\Sai\\my Projects\\Book-Shop-Management-master\\Book-Shop-Management-master\\people.txt"));
+                        String line;
+                        String fin ="";
+                        int count=0;
+                        while((line = br.readLine())!= null)
+                        {
+                               fin +=line;
+                               fin +=",";
+                        }
+                        br.close();
+                        String div[] = fin.split(",");
+                        for(int i=0;i<div.length-1;i++)
+                        {
+                                map.put(div[i],div[i+1]);
+                        }
+
+
+                        System.out.print("registration successful!");
 
 
 
 
-                        System.out.println("Registration successful!");
 
 
-                        System.out.print("Please enter the username");
-                        System.out.println("");
+
+
+                        System.out.println("Please enter the username");
                         String user = in.nextLine();
-                        System.out.print("Please enter the password");
-                        System.out.println("");
+                        System.out.println("Please enter the password");
                         String password = in.nextLine();
 
                         for (Map.Entry<String, String> entry : map.entrySet()) {
-                                String k = entry.getKey();
-                                String v = entry.getValue();
-                                if (user.equals(k) && password.equals(v)) {
+                               String allKeys = "";
+                               String allValues = "";
+                                Set keys = map.keySet();
+                                Iterator i = keys.iterator();
+                                while (i.hasNext()) {
+                                       allKeys +=i.next();
+                                }
+                                Collection getValues = map.values();
+                                i = getValues.iterator();
+                                while (i.hasNext()) {
+                                        allValues += i.next();
+                                }
+
+
+                                if (allKeys.contains(user) && allValues.contains(password)) {
                                         System.out.print("Login Successful!");
                                         System.out.println(" ");
                                         executeTheRest();
-                                        forExecute = false;
-                                        break;
+//                                        forExecute = false;
+//                                        break;
                                 } else {
                                         System.out.print("user entered the wrong credentials");
                                         System.out.println("");
-                                        System.out.print("only " + (--count) + " chances left");
-                                        System.out.println("");
+                                        System.out.println("only " + (--count) + " chances left");
+                                        System.out.print("Please click enter to continue");
+                                        executeTheStart();
                                         if (count == 0) {
                                                 System.out.print("Please try after 1 min");
                                                 System.out.println("");
