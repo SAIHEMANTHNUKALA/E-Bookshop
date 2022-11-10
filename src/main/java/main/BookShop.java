@@ -49,21 +49,20 @@ public class BookShop extends Bill{
 //                        pw.println(str);
 //                        pw.close();
 //
-//                        BufferedReader br = new BufferedReader(new FileReader("C:\\Sai\\my Projects\\Book-Shop-Management-master\\Book-Shop-Management-master\\people.txt"));
-//                        String line;
-//                        String fin ="";
-//                        int count=0;
-//                        while((line = br.readLine())!= null)
-//                        {
-//                                fin +=line;
-//                                fin +=",";
-//                        }
-//                        br.close();
-//                        String div[] = fin.split(",");
-//                        for(int i=0;i<div.length-1;i++)
-//                        {
-//                                map.put(div[i],div[i+1]);
-//                        }
+                        BufferedReader br = new BufferedReader(new FileReader("C:\\Sai\\my Projects\\Book-Shop-Management-master\\Book-Shop-Management-master\\people.txt"));
+                        String line;
+                        String fin ="";
+                        while((line = br.readLine())!= null)
+                        {
+                                fin +=line;
+                                fin +=",";
+                        }
+                        br.close();
+                        String div[] = fin.split(",");
+                        for(int i=0;i<div.length-1;i++)
+                        {
+                                map.put(div[i],div[i+1]);
+                        }
 
 
 
@@ -92,8 +91,7 @@ public class BookShop extends Bill{
                                         System.out.print("user entered the wrong credentials");
                                         System.out.println("");
                                         System.out.println("only " + (--count) + " chances left");
-//                                        System.out.println("Please click enter to continue");
-//                                        executeTheStart();
+                                        System.out.println("Please click enter to continue");
                                         if (count == 0) {
                                                 System.out.print("Due to wrong credentials User cannot login for one min! Please try after 1 min");
                                                 System.out.println("");
@@ -101,6 +99,8 @@ public class BookShop extends Bill{
                                                 count = 3;
                                                 executeTheStart();
                                         }
+                                        executeTheStart();
+
                                 }
                         }
 
@@ -126,7 +126,6 @@ public class BookShop extends Bill{
                         BufferedReader br = new BufferedReader(new FileReader("C:\\Sai\\my Projects\\Book-Shop-Management-master\\Book-Shop-Management-master\\people.txt"));
                         String line;
                         String fin ="";
-                        int count=0;
                         while((line = br.readLine())!= null)
                         {
                                fin +=line;
@@ -164,6 +163,7 @@ public class BookShop extends Bill{
                                 while (i.hasNext()) {
                                         allValues += i.next();
                                 }
+
 
 
                                 if (allKeys.contains(user) && allValues.contains(password)) {
@@ -255,7 +255,7 @@ public class BookShop extends Bill{
 //                                cn.setEmail(email);
                                 c1.finalizeCart(cn.getName());
 
-                                System.out.println("-------------------------------------------------");
+                                System.out.println("-------------------------------------------------------");
                                 System.exit(0);
 
                         } else {
