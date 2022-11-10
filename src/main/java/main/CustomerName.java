@@ -1,6 +1,5 @@
 package main;
 
-import java.util.Scanner;
 
 public class CustomerName{
 	String name;
@@ -21,5 +20,6 @@ public class CustomerName{
 	public void setEmail(String email){
 		this.name=email;
 	}
+
 
 }

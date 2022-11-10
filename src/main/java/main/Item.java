@@ -6,8 +6,6 @@ public class Item{
 
 		setItemName(itemName);
 		setMrp(mrpItem);
-
-
 	}
 	public String getItemName() {
 		return itemName;

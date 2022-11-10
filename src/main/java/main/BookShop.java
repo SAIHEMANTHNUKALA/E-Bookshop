@@ -6,7 +6,8 @@ import java.util.Scanner;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
-public class BookShop{
+public class BookShop extends Bill{
+
 
         public static Item [] itemAvailable = new Item[50];
         private static Map<String,String> map = new LinkedHashMap<String,String>();
@@ -39,29 +40,30 @@ public class BookShop{
                 System.out.print("Please enter the password");
                 System.out.println("");
                 String password = in.nextLine();
-                map.put(user,password);
-                        FileWriter fw = new FileWriter(fileName,true);
-                        BufferedWriter bw=new BufferedWriter(fw);
-                        PrintWriter pw=new PrintWriter(bw);
-                        String str = user + ","+ password;
-                        pw.println(str);
-                        pw.close();
 
-                        BufferedReader br = new BufferedReader(new FileReader("C:\\Sai\\my Projects\\Book-Shop-Management-master\\Book-Shop-Management-master\\people.txt"));
-                        String line;
-                        String fin ="";
-                        int count=0;
-                        while((line = br.readLine())!= null)
-                        {
-                                fin +=line;
-                                fin +=",";
-                        }
-                        br.close();
-                        String div[] = fin.split(",");
-                        for(int i=0;i<div.length-1;i++)
-                        {
-                                map.put(div[i],div[i+1]);
-                        }
+//                map.put(user,password);
+//                        FileWriter fw = new FileWriter(fileName,true);
+//                        BufferedWriter bw=new BufferedWriter(fw);
+//                        PrintWriter pw=new PrintWriter(bw);
+//                        String str = user + ","+ password;
+//                        pw.println(str);
+//                        pw.close();
+//
+//                        BufferedReader br = new BufferedReader(new FileReader("C:\\Sai\\my Projects\\Book-Shop-Management-master\\Book-Shop-Management-master\\people.txt"));
+//                        String line;
+//                        String fin ="";
+//                        int count=0;
+//                        while((line = br.readLine())!= null)
+//                        {
+//                                fin +=line;
+//                                fin +=",";
+//                        }
+//                        br.close();
+//                        String div[] = fin.split(",");
+//                        for(int i=0;i<div.length-1;i++)
+//                        {
+//                                map.put(div[i],div[i+1]);
+//                        }
 
 
 
@@ -84,16 +86,16 @@ public class BookShop{
                                         System.out.print("Login Successful!");
                                         System.out.println(" ");
                                         executeTheRest();
-//                                        forExecute = false;
-//                                        break;
+                                        forExecute = false;
+                                        break;
                                 } else {
                                         System.out.print("user entered the wrong credentials");
                                         System.out.println("");
                                         System.out.println("only " + (--count) + " chances left");
-                                        System.out.print("Please click enter to continue");
-                                        executeTheStart();
+//                                        System.out.println("Please click enter to continue");
+//                                        executeTheStart();
                                         if (count == 0) {
-                                                System.out.print("Please try after 1 min");
+                                                System.out.print("Due to wrong credentials User cannot login for one min! Please try after 1 min");
                                                 System.out.println("");
                                                 TimeUnit.MINUTES.sleep(1);
                                                 count = 3;
@@ -116,6 +118,7 @@ public class BookShop{
                         BufferedWriter bw=new BufferedWriter(fw);
                         PrintWriter pw=new PrintWriter(bw);
                         String str = userName + ","+ passWord;
+
                         pw.println(str);
                         pw.close();
 
@@ -137,10 +140,7 @@ public class BookShop{
                         }
 
 
-                        System.out.print("registration successful!");
-
-
-
+                        System.out.println("registration successful!");
 
 
 
@@ -250,11 +250,11 @@ public class BookShop{
                                 String s = sc.nextLine();
                                 CustomerName cn = new CustomerName();
                                 cn.setName(s);
-                                System.out.println("Please type your EmailId:");
-                                String email = sc.nextLine();
-                                cn.setEmail(email);
+//                                System.out.println("Please type your EmailId:");
+//                                String email = sc.nextLine();
+//                                cn.setEmail(email);
+                                c1.finalizeCart(cn.getName());
 
-                                c1.finalizeCart(cn.getName(), cn.getEmail());
                                 System.out.println("-------------------------------------------------");
                                 System.exit(0);
 
@@ -263,5 +263,8 @@ public class BookShop{
                                 addToCart();
                         }
                 }
+
+
+
 
 }

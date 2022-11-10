@@ -19,13 +19,13 @@ public class Cart extends Bill{
 
     }
     public int totalAmt=0;
-    public void finalizeCart(String name, String email){
-        super.getBill(name,email);//make it outside
+    public void finalizeCart(String name){
+        super.getBill(name);//make it outside
         for(int i=0;i<noOfItems;i++){
             System.out.println("|  "+ inCart.get(i).itemName + "  " + inCart.get(i).mrp +"  "+quant.get(i)+'\n');
         }
         totalAmt = calcBill();
-        System.out.println("total Amount: "+ Integer.toString(totalAmt));
+//        System.out.println("total Amount: "+ Integer.toString(totalAmt));
     }
     public int calcBill() {
         int total=0;
