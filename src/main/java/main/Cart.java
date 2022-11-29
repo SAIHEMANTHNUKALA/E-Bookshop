@@ -22,10 +22,10 @@ public class Cart extends Bill{
     public void finalizeCart(String name){
         super.getBill(name);//make it outside
         for(int i=0;i<noOfItems;i++){
-            System.out.println("|  "+ inCart.get(i).itemName + "  " + inCart.get(i).mrp +"  "+quant.get(i)+'\n');
+            System.out.println("|  Books Selected with Price & Quantity: "+ inCart.get(i).itemName + "  " + inCart.get(i).mrp +"  "+quant.get(i)+'\n');
         }
         totalAmt = calcBill();
-//        System.out.println("total Amount: "+ Integer.toString(totalAmt));
+        System.out.println("Total Amount: "+ Integer.toString(totalAmt));
     }
     public int calcBill() {
         int total=0;

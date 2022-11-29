@@ -246,6 +246,7 @@ public class BookShop extends Bill{
                         }
                         if (take1 == -1 && previousTake > 0) {
                                 sc.nextLine();
+                                System.out.println("Books Successfully added to the cart!");
                                 System.out.println("Please type your name to generate the bill :");
                                 String s = sc.nextLine();
                                 CustomerName cn = new CustomerName();
