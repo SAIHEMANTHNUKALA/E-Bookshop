@@ -95,7 +95,7 @@ public class BookShop extends Bill{
                                         if (count == 0) {
                                                 System.out.print("Due to wrong credentials User cannot login for one min! Please try after 1 min");
                                                 System.out.println("");
-                                                TimeUnit.MINUTES.sleep(1);
+                                                Thread.sleep(60000);
                                                 count = 3;
                                                 executeTheStart();
                                         }
@@ -181,7 +181,7 @@ public class BookShop extends Bill{
                                         if (count == 0) {
                                                 System.out.print("Please try after 1 min");
                                                 System.out.println("");
-                                                TimeUnit.MINUTES.sleep(1);
+                                                Thread.sleep( 60000);
                                                 count = 3;
                                                 executeTheStart();
                                         }

@@ -1,4 +1,3 @@
-babi,12345
 Priya Rachakonda,E-bookshop
 Priya Rachakonda,E-bookshop
 Saihemanth Nukala,E-bookshop
